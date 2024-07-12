@@ -1,4 +1,5 @@
 # Holds nodes for gameplay.
+require_relative "board/show_board"
 
 class Board
   attr_accessor :game_board
@@ -16,4 +17,6 @@ class Board
       game_board[8] << "edge"
     end
   end
+
+  include ShowBoard
 end

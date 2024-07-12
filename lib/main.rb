@@ -10,3 +10,9 @@ require_relative "main/node"
 # how to define winning? 4 in a row, but cannot list all possible cases; must detect. How? use nodes with connections? recursive trees?
 # board = array of arrays
 # array filled with nodes? what about transform?
+
+board = Board.new
+board.fill_board_edges
+# board.game_board[1][1] = "X"
+p board.game_board[1]
+board.show_board
