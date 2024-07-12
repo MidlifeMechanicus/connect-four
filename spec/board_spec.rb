@@ -29,13 +29,31 @@ describe Board do
   describe "#check_player_choice_valid" do
     context "a new game board has been created" do
       board = Board.new
-      it "finds choice A to be valid" do
-        expect(board.check_player_choice_valid("A", "X")).to be true
+      board.fill_board_edges
+      it "should call #implement_player_choice with appropritate arguments" do
+        expect(board).to receive(:implement_player_choice).with(2, "O")
+        board.check_player_choice_valid("B", "O")
       end
-      it "should call 'get_player_choice' with appropriate arguments" do
+      it "should call #get_player_choice with appropriate arguments" do
         expect(board).to receive(:get_player_choice).with("X")
         board.check_player_choice_valid("AA", "X")
       end
+      it "should call #get_player_choice with appropriate arguments when chosen row is full" do
+        6.times do
+          board.game_board[5] << "X"
+        end
+        expect(board).to receive(:get_player_choice).with("X")
+        board.check_player_choice_valid("E", "X")
+      end
+    end
+  end
+
+  describe "#implement_player_choice" do
+    it "should push symbol to appropriate row of @game_board" do
+      board = Board.new
+      board.fill_board_edges
+      board.implement_player_choice(4, "X")
+      expect(board.game_board[4][1]).to eq("X")
     end
   end
 end
