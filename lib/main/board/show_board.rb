@@ -56,8 +56,7 @@ module ShowBoard
       =-=-=-=-=-=-=-=-=
         A B C D E F G
     END
+
     puts board
   end
 end
-
-# string_version = some_bool ? "yes" : "no"

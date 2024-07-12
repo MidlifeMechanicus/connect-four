@@ -1,5 +1,4 @@
 require_relative "main/board"
-require_relative "main/node"
 
 # Will need game board to display current state
 # will need nputs from players
@@ -13,6 +12,4 @@ require_relative "main/node"
 
 board = Board.new
 board.fill_board_edges
-# board.game_board[1][1] = "X"
-p board.game_board[1]
-board.show_board
+board.get_player_choice("X")
