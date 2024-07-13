@@ -11,16 +11,4 @@ require_relative "main/board"
 # array filled with nodes? what about transform?
 
 board = Board.new
-counter = 0
-7.times do
-  board.game_board[counter].push("X", "X", "O", "O", "X", "O")
-  counter += 1
-end
-board.show_board
-
-puts board.final_message
-
-board.winner = true
-board.winning_player = "X"
-
-puts board.final_message
+board.play_game
