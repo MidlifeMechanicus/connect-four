@@ -51,6 +51,7 @@ describe Board do
       board = Board.new
       board.check_winner
       expect(board.winner).to be false
+      expect(board.winning_player).to be nil
     end
 
     it "should detect a winner when four of the same symbol are in a row" do
@@ -62,6 +63,7 @@ describe Board do
       end
       board.check_winner
       expect(board.winner).to be true
+      expect(board.winning_player).to eq("X")
     end
 
     it "should detect a winner when four of the same symbol are in a column" do
@@ -71,6 +73,7 @@ describe Board do
       end
       board.check_winner
       expect(board.winner).to be true
+      expect(board.winning_player).to eq("O")
     end
 
     it "should detect a winner when four of the same symbol form a rising diagonal" do
@@ -81,6 +84,7 @@ describe Board do
       board.game_board[5].push("O", "O", "O", "X")
       board.check_winner
       expect(board.winner).to be true
+      expect(board.winning_player).to eq("X")
     end
 
     it "should detect a winner when four of the same symbol form a falling diagonal" do
@@ -91,6 +95,7 @@ describe Board do
       board.game_board[2].push("O", "O", "O", "X")
       board.check_winner
       expect(board.winner).to be true
+      expect(board.winning_player).to eq("X")
     end
   end
 end

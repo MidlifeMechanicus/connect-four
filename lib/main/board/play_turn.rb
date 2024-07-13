@@ -52,15 +52,19 @@ module PlayTurn
         # This test checks for a horizontal left-to-right win.
         if game_board[i + 1][j] == entry && game_board[i + 2][j] == entry && game_board[i + 3][j] == entry
           self.winner = true
+          self.winning_player = entry
         # This test checks for a vertical bottom-to-top win.
         elsif game_board[i][j + 1] == entry && game_board[i][j + 2] == entry && game_board[i][j + 3] == entry
           self.winner = true
+          self.winning_player = entry
         # This test checks for a rising left-to-right diagonal win.
         elsif game_board[i + 1][j + 1] == entry && game_board[i + 2][j + 2] == entry && game_board[i + 3][j + 3] == entry
           self.winner = true
+          self.winning_player = entry
         # This test checks for a falling left-to-right diagonal win.
         elsif game_board[i - 1][j + 1] == entry && game_board[i - 2][j + 2] == entry && game_board[i - 3][j + 3] == entry
           self.winner = true
+          self.winning_player = entry
         end
       end
     end

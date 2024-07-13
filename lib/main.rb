@@ -11,10 +11,9 @@ require_relative "main/board"
 # array filled with nodes? what about transform?
 
 board = Board.new
-counter = 1
-4.times do
-  board.game_board[counter] << "X"
+counter = 0
+7.times do
+  board.game_board[counter].push("X", "X", "O", "O", "X", "O")
   counter += 1
 end
-p board.game_board
-board.check_winner
+board.show_board
