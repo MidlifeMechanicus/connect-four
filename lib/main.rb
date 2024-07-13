@@ -17,3 +17,10 @@ counter = 0
   counter += 1
 end
 board.show_board
+
+puts board.final_message
+
+board.winner = true
+board.winning_player = "X"
+
+puts board.final_message

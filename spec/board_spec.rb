@@ -5,13 +5,13 @@ describe Board do
   describe "#initialize" do
     context "a new game board has been created" do
       board = Board.new
-      it "has a gameboard array of 9 empty arrays'" do
+      it "has a gameboard array of 7 empty arrays'" do
         expect(board.game_board).to eq([[], [], [], [], [], [], []])
       end
-      it "has turn count of zero" do
-        expect(board.turn_count).to be 0
+      it "should have no winning player" do
+        expect(board.winning_player).to be nil
       end
-      it "has no winner" do
+      it "should have no winner" do
         expect(board.winner).to be false
       end
     end
