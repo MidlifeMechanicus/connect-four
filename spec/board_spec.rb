@@ -6,7 +6,7 @@ describe Board do
     context "a new game board has been created" do
       board = Board.new
       it "has a gameboard array of 9 empty arrays'" do
-        expect(board.game_board).to eq([[], [], [], [], [], [], [], [], []])
+        expect(board.game_board).to eq([[], [], [], [], [], [], []])
       end
       it "has turn count of zero" do
         expect(board.turn_count).to be 0
@@ -20,10 +20,9 @@ describe Board do
   describe "#check_player_choice_valid" do
     context "a new game board has been created" do
       board = Board.new
-      board.fill_board_edges
       it "should call #implement_player_choice with appropritate arguments" do
         expect(board).to receive(:implement_player_choice).with(2, "O")
-        board.check_player_choice_valid("B", "O")
+        board.check_player_choice_valid("C", "O")
       end
       it "should call #get_player_choice with appropriate arguments" do
         expect(board).to receive(:get_player_choice).with("X")
@@ -34,8 +33,16 @@ describe Board do
           board.game_board[5] << "X"
         end
         expect(board).to receive(:get_player_choice).with("X")
-        board.check_player_choice_valid("E", "X")
+        board.check_player_choice_valid("F", "X")
       end
+    end
+  end
+
+  describe "#implement_player_choice" do
+    it "should push symbol to appropriate row of @game_board" do
+      board = Board.new
+      board.implement_player_choice(4, "X")
+      expect(board.game_board[4][0]).to eq("X")
     end
   end
 
@@ -84,15 +91,6 @@ describe Board do
       board.game_board[2].push("O", "O", "O", "X")
       board.check_winner
       expect(board.winner).to be true
-    end
-  end
-
-  describe "#implement_player_choice" do
-    it "should push symbol to appropriate row of @game_board" do
-      board = Board.new
-      board.fill_board_edges
-      board.implement_player_choice(4, "X")
-      expect(board.game_board[4][1]).to eq("X")
     end
   end
 end

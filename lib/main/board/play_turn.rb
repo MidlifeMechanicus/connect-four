@@ -22,20 +22,20 @@ module PlayTurn
   end
 
   def check_player_choice_valid(choice, symbol)
-    if choice == "A" && game_board[1].length < 7
+    if choice == "A" && game_board[0].length < 6
+      implement_player_choice(0, symbol)
+    elsif choice == "B" && game_board[1].length < 6
       implement_player_choice(1, symbol)
-    elsif choice == "B" && game_board[2].length < 7
+    elsif choice == "C" && game_board[2].length < 6
       implement_player_choice(2, symbol)
-    elsif choice == "C" && game_board[3].length < 7
+    elsif choice == "D" && game_board[3].length < 6
       implement_player_choice(3, symbol)
-    elsif choice == "D" && game_board[4].length < 7
+    elsif choice == "E" && game_board[4].length < 6
       implement_player_choice(4, symbol)
-    elsif choice == "E" && game_board[5].length < 7
+    elsif choice == "F" && game_board[5].length < 6
       implement_player_choice(5, symbol)
-    elsif choice == "F" && game_board[6].length < 7
+    elsif choice == "G" && game_board[6].length < 6
       implement_player_choice(6, symbol)
-    elsif choice == "G" && game_board[7].length < 7
-      implement_player_choice(7, symbol)
     else
       get_player_choice(symbol)
     end

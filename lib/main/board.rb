@@ -6,7 +6,7 @@ class Board
   attr_accessor :game_board, :turn_count, :winner
 
   def initialize
-    @game_board = Array.new(9) { [] }
+    @game_board = Array.new(7) { [] }
     @turn_count = 0
     @winner = false
   end
