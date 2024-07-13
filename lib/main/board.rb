@@ -11,16 +11,6 @@ class Board
     @winner = false
   end
 
-  def fill_board_edges
-    game_board.each do |element|
-      element << "edge"
-    end
-    6.times do
-      game_board[0] << "edge"
-      game_board[8] << "edge"
-    end
-  end
-
   include ShowBoard
   include PlayTurn
 end

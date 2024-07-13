@@ -17,15 +17,6 @@ describe Board do
     end
   end
 
-  describe "#fill_board_edges" do
-    it "fills first entry of each element with 'empty', as well as first and last column" do
-      board = Board.new
-      board.fill_board_edges
-      expect(board.game_board).to eq([%w[edge edge edge edge edge edge edge], ["edge"], ["edge"], ["edge"], ["edge"], ["edge"], ["edge"],
-                                      ["edge"], %w[edge edge edge edge edge edge edge]])
-    end
-  end
-
   describe "#check_player_choice_valid" do
     context "a new game board has been created" do
       board = Board.new
@@ -45,6 +36,54 @@ describe Board do
         expect(board).to receive(:get_player_choice).with("X")
         board.check_player_choice_valid("E", "X")
       end
+    end
+  end
+
+  describe "#check_winner" do
+    it "should not detect a winner on a fresh board" do
+      board = Board.new
+      board.check_winner
+      expect(board.winner).to be false
+    end
+
+    it "should detect a winner when four of the same symbol are in a row" do
+      board = Board.new
+      counter = 1
+      4.times do
+        board.game_board[counter] << "X"
+        counter += 1
+      end
+      board.check_winner
+      expect(board.winner).to be true
+    end
+
+    it "should detect a winner when four of the same symbol are in a column" do
+      board = Board.new
+      4.times do
+        board.game_board[3] << "O"
+      end
+      board.check_winner
+      expect(board.winner).to be true
+    end
+
+    it "should detect a winner when four of the same symbol form a rising diagonal" do
+      board = Board.new
+      board.game_board[2].push("X")
+      board.game_board[3].push("O", "X")
+      board.game_board[4].push("O", "O", "X")
+      board.game_board[5].push("O", "O", "O", "X")
+      board.check_winner
+      expect(board.winner).to be true
+    end
+
+    it "should detect a winner when four of the same symbol form a falling diagonal" do
+      board = Board.new
+      board.game_board[5].push("X")
+      board.game_board[4].push("O", "X")
+      board.game_board[3].push("O", "O", "X")
+      board.game_board[2].push("O", "O", "O", "X")
+      board.check_winner
+      expect(board.winner).to be true
     end
   end
 

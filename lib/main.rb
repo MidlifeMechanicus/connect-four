@@ -11,5 +11,10 @@ require_relative "main/board"
 # array filled with nodes? what about transform?
 
 board = Board.new
-board.fill_board_edges
-board.get_player_choice("X")
+counter = 1
+4.times do
+  board.game_board[counter] << "X"
+  counter += 1
+end
+p board.game_board
+board.check_winner
